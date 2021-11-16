@@ -1,3 +1,20 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 *, *::after, *::before {
   padding: 0;
   margin: 0;
@@ -5,9 +22,22 @@
 
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media only screen and (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 @keyframes moveInLeft {
   0% {
@@ -46,29 +76,35 @@ body {
 body {
   font-family: "Lato",sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
-  color: #777;
-  padding: 30px; }
+  color: #777; }
 
 .heading-primary {
   color: white;
   text-transform: uppercase;
-  margin-bottom: 60px; }
+  margin-bottom: 6rem; }
   .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation-name: moveInLeft;
     animation-duration: 1s; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary-main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 3rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
     animation-name: moveInRight;
     animation-duration: 1s; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary-sub {
+        letter-spacing: .5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -82,6 +118,12 @@ body {
   transition: all .2s;
   letter-spacing: 2px;
   cursor: pointer; }
+  @media only screen and (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(-15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -154,9 +196,21 @@ body {
   height: 50rem;
   width: 75%;
   margin: 0 auto; }
+  @media only screen and (max-width: 56.25em) {
+    .book {
+      width: 100%; } }
+  @media only screen and (max-width: 37.5em) {
+    .book {
+      width: 100%; } }
   .book__form {
     width: 50%;
     padding: 6rem; }
+    @media only screen and (max-width: 56.25em) {
+      .book__form {
+        width: 100%; } }
+    @media only screen and (max-width: 37.5em) {
+      .book__form {
+        width: 100%; } }
 
 .btn, .btn:link, .btn:visited {
   display: inline-block;
@@ -237,6 +291,23 @@ body {
   width: 100%;
   margin: 0 auto;
   margin-bottom: 2rem; }
+  @media only screen and (max-width: 75em) {
+    .row {
+      flex-direction: column;
+      padding: 1rem;
+      margin-bottom: 7rem;
+      justify-content: space-between; } }
+  @media only screen and (max-width: 56.25em) {
+    .row {
+      flex-direction: column;
+      padding: 1rem;
+      margin-bottom: 7rem;
+      justify-content: space-between; } }
+  @media only screen and (max-width: 37.5em) {
+    .row {
+      flex-direction: column;
+      padding: .5rem;
+      margin-bottom: 7rem; } }
 
 .col-1 {
   display: flex;
@@ -259,6 +330,12 @@ body {
 
 .composition {
   position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .composition {
+      margin: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .composition {
+      margin: 4rem; } }
   .composition__photo {
     width: 55%;
     box-shadow: 0 1.5rem 4rem rgba(10, 10, 10, 0.4);
@@ -294,6 +371,12 @@ body {
   margin-left: 3rem;
   margin-right: 3rem;
   height: 35rem; }
+  @media only screen and (max-width: 56.25em) {
+    .feature-box {
+      margin-bottom: 2rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .feature-box {
+      margin-bottom: 1.5rem; } }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: .5rem;
@@ -412,23 +495,47 @@ body {
   font-size: 1.6rem;
   transform: skewX(-12deg);
   margin-bottom: 2.5rem; }
+  @media only screen and (max-width: 56.25em) {
+    .story {
+      transform: skew(0); } }
+  @media only screen and (max-width: 37.5em) {
+    .story {
+      transform: skew(0); } }
   .story__shape {
     width: 15rem;
     height: 15rem;
-    float: left;
+    float: right;
     -webkit-shape-outside: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
     backface-visibility: hidden; }
+    @media only screen and (max-width: 56.25em) {
+      .story__shape {
+        transform: skew(0); } }
+    @media only screen and (max-width: 37.5em) {
+      .story__shape {
+        transform: skew(0); } }
   .story__image {
     height: 100%;
     transition: all .5s;
     transform: translateX(-4rem) scale(1.4);
     backface-visibility: hidden; }
+    @media only screen and (max-width: 56.25em) {
+      .story__image {
+        transform: skew(0); } }
+    @media only screen and (max-width: 37.5em) {
+      .story__image {
+        transform: skew(0); } }
   .story__text {
     transform: skewX(12deg); }
+    @media only screen and (max-width: 56.25em) {
+      .story__text {
+        transform: skew(0); } }
+    @media only screen and (max-width: 37.5em) {
+      .story__text {
+        transform: skew(0); } }
   .story__caption {
     position: absolute;
     top: 50%;
@@ -573,6 +680,14 @@ body {
     width: 33.33333333%;
     float: left;
     flex-grow: 1; }
+    @media only screen and (max-width: 56.25em) {
+      .popup__left {
+        display: none;
+        width: 0%; } }
+    @media only screen and (max-width: 37.5em) {
+      .popup__left {
+        display: none;
+        width: 0%; } }
   .popup__right {
     display: flex;
     width: 66.666666667%;
@@ -583,10 +698,19 @@ body {
     padding-left: 3rem;
     padding-right: 2rem;
     flex-grow: 1; }
+    @media only screen and (max-width: 56.25em) {
+      .popup__right {
+        width: 100%; } }
+    @media only screen and (max-width: 37.5em) {
+      .popup__right {
+        width: 100%; } }
     .popup__right .btn {
       margin: 3rem;
       width: 20rem;
       text-align: center; }
+      @media only screen and (max-width: 56.25em) {
+        .popup__right .btn {
+          margin-left: 7rem; } }
     .popup__right .heading-secondary {
       text-align: left;
       width: fit-content; }
@@ -607,6 +731,11 @@ body {
     text-decoration: none;
     font-size: 3rem;
     color: darkgray; }
+    @media only screen and (max-width: 56.25em) {
+      .popup__close:link, .popup__close:visited {
+        top: .5rem;
+        right: .5rem;
+        font-size: 4rem; } }
   .popup__close:hover {
     color: #55c57a; }
 

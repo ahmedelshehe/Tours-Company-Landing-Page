@@ -28,6 +28,14 @@
         width: 33.33333333%;
         float: left;
         flex-grow : 1;
+        @include respond(tab-port){
+            display: none;
+            width: 0%;
+          }
+          @include respond(phone){
+            display: none;
+            width: 0%;
+          }
     }
     &__right{
         display: flex;
@@ -39,11 +47,22 @@
         padding-left: 3rem;
         padding-right: 2rem;
         flex-grow : 1;
+        @include respond(tab-port){
+
+            width: 100%;
+          }
+          @include respond(phone){
+
+            width:100%;
+          }
         .btn{
             margin: 3rem;
             width: 20rem;
             text-align: center;
-           
+            @include respond(tab-port){
+                margin-left: 7rem;
+              }
+
 
         }
         .heading-secondary{
@@ -72,11 +91,17 @@
             text-decoration: none;
             font-size: 3rem;
             color: darkgray;
+            @include respond(tab-port){
+                top: .5rem;
+                right: .5rem;
+                font-size: 4rem;
+              }
 
         }
         &:hover{
             color: $color-primary;
         }
+        
         
     }
 }

@@ -5,6 +5,23 @@
     width: 100%;
     margin: 0 auto ;
     margin-bottom: $gutter-vertical;
+    @include respond(tab-land){
+      flex-direction: column;
+      padding: 1rem;
+      margin-bottom: 7rem;
+      justify-content: space-between;
+    }
+    @include respond(tab-port){
+      flex-direction: column;
+      padding: 1rem;
+      margin-bottom: 7rem;
+      justify-content: space-between;
+    }
+    @include respond(phone){
+      flex-direction: column;
+      padding: .5rem;
+      margin-bottom: 7rem;
+    }
     
   }
   
